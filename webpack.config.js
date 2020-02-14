@@ -1,5 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   entry: {
@@ -11,7 +13,10 @@ module.exports = {
     filename: '[name].js',
   },
   resolve: {
-    extensions: ['.js', '.jsx']
+    alias: {
+      src: path.resolve(__dirname, 'src'),
+    },
+    extensions: [ '.js', '.jsx', '.ts', '.tsx', '.css' ],
   },
   module: {
     rules: [
@@ -19,6 +24,10 @@ module.exports = {
         test: /\.jsx?$/,
         include: path.resolve(__dirname, 'src'),
         use: [ 'babel-loader' ],
+      },
+      {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader'],
       },
     ],
   },
@@ -29,6 +38,12 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: 'src/index.html', //source html
+    }),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
+    }),
+    new Dotenv({
+      path: './.env',
     }),
   ],
 };
