@@ -14,7 +14,7 @@ module.exports = {
   },
   resolve: {
     alias: {
-      src: path.resolve(__dirname, 'src'),
+      src: path.resolve(__dirname, './src'),
     },
     extensions: [ '.js', '.jsx', '.ts', '.tsx', '.css' ],
   },
@@ -33,6 +33,7 @@ module.exports = {
   },
   devServer: {
     contentBase: path.resolve(__dirname, 'dist'),
+    historyApiFallback: true,
     port: 9000,
   },
   plugins: [
