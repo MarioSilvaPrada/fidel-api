@@ -14,7 +14,8 @@ module.exports = {
   },
   resolve: {
     alias: {
-      src: path.resolve(__dirname, './src'),
+      root: __dirname,
+      src: path.resolve(__dirname, 'src'),
     },
     extensions: [ '.js', '.jsx', '.ts', '.tsx', '.css' ],
   },
@@ -27,7 +28,17 @@ module.exports = {
       },
       {
         test: /\.css$/i,
-        use: ['style-loader', 'css-loader'],
+        use: [ 'style-loader', 'css-loader' ],
+      },
+      {
+        test: /\.m?js$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [ '@babel/preset-env' ],
+          },
+        },
       },
     ],
   },
