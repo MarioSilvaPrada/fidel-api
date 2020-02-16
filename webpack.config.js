@@ -14,7 +14,10 @@ module.exports = {
   },
   resolve: {
     alias: {
-      src: path.resolve(__dirname, './src'),
+      components: path.resolve(__dirname, './src/components'),
+      routes: path.resolve(__dirname, './src/routes'),
+      assets: path.resolve(__dirname, './src/assets'),
+      theme: path.resolve(__dirname, './src/theme'),
     },
     extensions: [ '.js', '.jsx', '.ts', '.tsx', '.css' ],
   },
