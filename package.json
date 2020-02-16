@@ -1,5 +1,5 @@
 {
-  "name": "react-boilerplate",
+  "name": "react-mariosilvaprada",
   "version": "1.0.0",
   "main": "index.js",
   "author": "mariosilvaprada",
@@ -39,5 +39,19 @@
     "webpack": "^4.41.6",
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.10.1"
-  }
+  },
+  "description": "a simpler create-react-app",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarioSilvaPrada/react-boilerplate.git"
+  },
+  "keywords": [
+    "npm",
+    "npm-react",
+    "npm-styled-components"
+  ],
+  "bugs": {
+    "url": "https://github.com/MarioSilvaPrada/react-boilerplate/issues"
+  },
+  "homepage": "https://github.com/MarioSilvaPrada/react-boilerplate#readme"
 }
