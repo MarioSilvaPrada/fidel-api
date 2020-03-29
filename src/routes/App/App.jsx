@@ -1,13 +1,34 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import api from 'api/api';
+import moment from 'moment';
 
 import * as S from './App.styled';
 
 const App = () => {
-  api.get().then((res) => console.log(res));
+  const [data, setData] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    api.get().then((res) => {
+      setData(res.data.items);
+      setIsLoading(false);
+    });
+  }, []);
+
   return (
     <S.Container>
-      <h1>Home</h1>
+      {isLoading ? (
+        <p>Loading</p>
+      ) : (
+        data.map(({ created, id }) => (
+          <div key={id}>
+            <p>
+              created at:
+              {moment(created).format('MMMM Do YYYY')}
+            </p>
+          </div>
+        ))
+      )}
     </S.Container>
   );
 };

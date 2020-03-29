@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 
 export const Container = styled.div`
     padding: 2rem;
@@ -7,6 +6,5 @@ export const Container = styled.div`
     background: #ccc;
 `;
 
-export const StyledLink = styled(Link)`
-    margin-right: 2rem;
+export const StyledLink = styled.h1`
 `;
