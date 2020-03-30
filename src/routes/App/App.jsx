@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import api from 'api/api';
-import moment from 'moment';
+
+// components
+import Spinner from 'components/Spinner/Spinner';
+import Transaction from 'components/Transaction/Transaction';
 
 import * as S from './App.styled';
-
 
 const App = () => {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+
+  const [position, setPosition] = useState(0);
 
   useEffect(() => {
     api.get().then((res) => {
@@ -17,32 +21,35 @@ const App = () => {
     });
   }, []);
 
+  const onScroll = () => {
+    const positionToTop = window.pageYOffset;
+    setPosition(positionToTop);
+  };
+
+  useEffect(
+    () => {
+      window.addEventListener('scroll', onScroll);
+    },
+    [position],
+  );
+
   return (
     <S.Container>
       {isLoading ? (
-        <p>Loading</p>
+        <Spinner />
       ) : (
         data.items.map(({
-          datetime, id, amount, card,
+          datetime, id, amount, card, location,
         }) => (
-          <div key={id}>
-            <p>
-              created at:
-              {moment(datetime).format('MMMM Do YYYY')}
-            </p>
-            <p>
-              €
-              {amount.toFixed(2)}
-            </p>
-            <p>
-              €
-              {card.scheme}
-            </p>
-            <p>
-              €
-              {card.lastNumbers}
-            </p>
-          </div>
+          <Transaction
+            key={id}
+            datetime={datetime}
+            id={id}
+            amount={amount}
+            location={location}
+            card={card}
+            position={position}
+          />
         ))
       )}
     </S.Container>
