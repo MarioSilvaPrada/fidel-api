@@ -5,7 +5,7 @@ import Card from 'components/Card/Card';
 import * as S from './Transaction.styled';
 
 const Transaction = ({
-  datetime, amount, card, location,
+  datetime, amount, card, location, currency,
 }) => (
   <S.Container>
     <S.InfoWrapper>
@@ -19,14 +19,14 @@ const Transaction = ({
         {location.city}
       </S.Detail>
       <S.Amount>
-        Amount: €
+        Amount:
+        {' '}
+        {currency === 'GBP' ? '£' : '€'}
+        {' '}
         {amount.toFixed(2)}
       </S.Amount>
     </S.InfoWrapper>
-    <Card
-      scheme={card.scheme}
-      lastNumbers={card.lastNumbers}
-    />
+    <Card scheme={card.scheme} lastNumbers={card.lastNumbers} />
   </S.Container>
 );
 

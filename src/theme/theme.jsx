@@ -9,6 +9,9 @@ const theme = {
   sizes: {
     navbarHeight: '6rem',
   },
+  breakpoints: {
+    medium: '1160px',
+  },
 };
 
 export default theme;

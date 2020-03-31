@@ -19,3 +19,11 @@ a {
   text-decoration: none;
   color: inherit;
 }
+
+/* REM sizes breackpoints*/
+
+@media screen and (max-width: 1160px) {
+  html {
+    font-size: 85%;
+  }
+}
