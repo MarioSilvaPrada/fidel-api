@@ -5,7 +5,7 @@ import Card from 'components/Card/Card';
 import * as S from './Transaction.styled';
 
 const Transaction = ({
-  datetime, amount, card, location, position,
+  datetime, amount, card, location,
 }) => (
   <S.Container>
     <S.InfoWrapper>
@@ -26,7 +26,6 @@ const Transaction = ({
     <Card
       scheme={card.scheme}
       lastNumbers={card.lastNumbers}
-      position={position}
     />
   </S.Container>
 );

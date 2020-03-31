@@ -7,6 +7,7 @@ export const Container = styled.div`
   padding: 1.5rem;
   display: flex;
   color: white;
+  z-index: 10;
   position: fixed;
   top:0;
   right: 0;

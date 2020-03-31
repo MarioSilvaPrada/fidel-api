@@ -30,11 +30,12 @@ export const CardWrapper = styled.div`
   border-radius: 8px;
   box-shadow: 0 10px 10px -6px #777;
   display: flex;
+  opacity:0;
   flex-direction: column;
   justify-content: space-between;
   color: ${({ theme }) => theme.darkBlue};
   font-family: 'Space Mono', monospace;
-  animation: ${(props) => props.isAnimated && Animation} 1s forwards linear;
+  animation: ${(props) => props.isAnimated && Animation} .5s forwards linear;
   ${({ scheme }) => (scheme === 'visa' ? visaBackground : mastercardBackground)};
 `;
 

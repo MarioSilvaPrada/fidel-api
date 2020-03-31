@@ -1,19 +1,21 @@
-import React, { useRef } from 'react';
+import React from 'react';
+
+// library to check if a specific element is in viewport
+import { useInView } from 'react-intersection-observer';
 
 // logos
 import visa from 'assets/visa.png';
 import mastercard from 'assets/mastercard.png';
 import * as S from './Card.styled';
 
-const Card = ({ scheme, lastNumbers, position }) => {
-  const inputEl = useRef('');
+const Card = ({ scheme, lastNumbers }) => {
+  const [ref, inView] = useInView({
+    /* Optional options */
+    threshold: 0,
+  });
 
   return (
-    <S.CardWrapper
-      scheme={scheme}
-      ref={inputEl}
-      isAnimated={inputEl.current.offsetTop === position}
-    >
+    <S.CardWrapper scheme={scheme} ref={ref} inView={inView} isAnimated={inView}>
       <S.CardLogo src={scheme === 'visa' ? visa : mastercard} />
       <S.Numbers>
         **** **** ****

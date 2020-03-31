@@ -6,3 +6,7 @@ export const Container = styled.div`
 `;
 
 export const Title = styled.div`color: red;`;
+
+export const ButtonsWrapper = styled.div`
+
+`;

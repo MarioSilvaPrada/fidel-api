@@ -12,28 +12,30 @@ const App = () => {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
+  // Searchbar Filter State
   const [filter, setFilter] = useState('');
 
-  const [position, setPosition] = useState(0);
+  const ITEMS_DISPLAY = 20;
+
+  console.log(data);
 
   useEffect(() => {
-    api.get().then((res) => {
+    api.get(`?limit=${ITEMS_DISPLAY}`).then((res) => {
       setData(res.data);
       setIsLoading(false);
     });
   }, []);
 
-  const onScroll = () => {
-    const positionToTop = window.pageYOffset;
-    setPosition(positionToTop);
+  const getNext = () => {
+    setIsLoading(true);
+    api
+      .get(`?start=${encodeURIComponent(JSON.stringify(data.last))}&limit=${ITEMS_DISPLAY}`)
+      .then((res) => {
+        console.log(res);
+        setData(res.data);
+        setIsLoading(false);
+      });
   };
-
-  useEffect(
-    () => {
-      window.addEventListener('scroll', onScroll);
-    },
-    [position],
-  );
 
   return (
     <S.Container>
@@ -54,9 +56,11 @@ const App = () => {
                 amount={amount}
                 location={location}
                 card={card}
-                position={position}
               />
             ))}
+          <S.ButtonsWrapper>
+            <button type="button" onClick={() => getNext()}>Next</button>
+          </S.ButtonsWrapper>
         </div>
       )}
     </S.Container>
