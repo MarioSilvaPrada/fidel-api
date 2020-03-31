@@ -29,7 +29,7 @@ const NavBar = ({
       <S.StyledLink>Transactions</S.StyledLink>
       <S.RadioContainer>
         {inputRadios.map((radio) => (
-          <S.StyledLabel>
+          <S.StyledLabel key={radio.value}>
             <S.StyledRadio
               name="scheme"
               type="radio"

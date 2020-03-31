@@ -7,11 +7,9 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import App from './routes/App/App';
 import theme from './theme/theme';
+
 // Pages
-
 import PageNotFound from './routes/PageNotFound/PageNotFound';
-
-// Components
 
 const rootElement = document.getElementById('root');
 const root = (
