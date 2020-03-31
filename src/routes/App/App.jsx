@@ -28,6 +28,7 @@ const App = () => {
     });
   }, []);
 
+  // function to fecth more dato from API
   const loadMore = () => {
     setIsLoading(true);
     api
@@ -50,6 +51,7 @@ const App = () => {
             valueRadio={valueRadio}
             setValueRadio={setValueRadio}
           />
+          {/* map through our data array and filter by radio or searchbar input */}
           {data.items
             .filter((item) => item.location.city.toLowerCase().includes(filter.toLowerCase()))
             .filter((item) => item.card.scheme.includes(valueRadio))
