@@ -15,9 +15,8 @@ const App = () => {
   // Searchbar Filter State
   const [filter, setFilter] = useState('');
 
+  // Number of items to be displayed
   const ITEMS_DISPLAY = 20;
-
-  console.log(data);
 
   useEffect(() => {
     api.get(`?limit=${ITEMS_DISPLAY}`).then((res) => {
@@ -26,7 +25,7 @@ const App = () => {
     });
   }, []);
 
-  const getNext = () => {
+  const loadMore = () => {
     setIsLoading(true);
     api
       .get(`?start=${encodeURIComponent(JSON.stringify(data.last))}&limit=${ITEMS_DISPLAY}`)
@@ -59,7 +58,7 @@ const App = () => {
               />
             ))}
           <S.ButtonsWrapper>
-            <button type="button" onClick={() => getNext()}>Next</button>
+            <S.StyledButton type="button" onClick={loadMore}>Load more</S.StyledButton>
           </S.ButtonsWrapper>
         </div>
       )}

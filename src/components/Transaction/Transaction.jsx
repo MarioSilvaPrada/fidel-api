@@ -18,10 +18,10 @@ const Transaction = ({
         Location:
         {location.city}
       </S.Detail>
-      <S.Detail>
+      <S.Amount>
         Amount: €
         {amount.toFixed(2)}
-      </S.Detail>
+      </S.Amount>
     </S.InfoWrapper>
     <Card
       scheme={card.scheme}
