@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 
 // logos
 import visa from 'assets/visa.png';
@@ -6,20 +6,14 @@ import mastercard from 'assets/mastercard.png';
 import * as S from './Card.styled';
 
 const Card = ({ scheme, lastNumbers, position }) => {
-  const inputEl = useRef(null);
-
-  const [elementPosition, setElementPosition] = useState(0);
-
-  const checkPosition = () => setElementPosition(inputEl.current.offsetTop);
+  const inputEl = useRef('');
 
   return (
     <S.CardWrapper
       scheme={scheme}
       ref={inputEl}
-      onScroll={() => checkPosition()}
-      isAnimated={elementPosition === position}
+      isAnimated={inputEl.current.offsetTop === position}
     >
-      {console.log(elementPosition === position)}
       <S.CardLogo src={scheme === 'visa' ? visa : mastercard} />
       <S.Numbers>
         **** **** ****

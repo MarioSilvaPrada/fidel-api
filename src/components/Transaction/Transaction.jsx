@@ -23,7 +23,11 @@ const Transaction = ({
         {amount.toFixed(2)}
       </S.Detail>
     </S.InfoWrapper>
-    <Card scheme={card.scheme} lastNumbers={card.lastNumbers} position={position} />
+    <Card
+      scheme={card.scheme}
+      lastNumbers={card.lastNumbers}
+      position={position}
+    />
   </S.Container>
 );
 
