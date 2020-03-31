@@ -9,14 +9,14 @@ import NavBar from 'components/NavBar/NavBar';
 import * as S from './App.styled';
 
 const App = () => {
-  const [ data, setData ] = useState({});
-  const [ isLoading, setIsLoading ] = useState(true);
+  const [data, setData] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
 
   // Radio buttons filter state
-  const [ valueRadio, setValueRadio ] = useState('');
+  const [valueRadio, setValueRadio] = useState('');
 
   // Searchbar filter State
-  const [ filter, setFilter ] = useState('');
+  const [filter, setFilter] = useState('');
 
   // Number of items to be displayed
   const ITEMS_DISPLAY = 15;
@@ -53,7 +53,9 @@ const App = () => {
           {data.items
             .filter((item) => item.location.city.toLowerCase().includes(filter.toLowerCase()))
             .filter((item) => item.card.scheme.includes(valueRadio))
-            .map(({ datetime, id, amount, card, location, currency }) => (
+            .map(({
+              datetime, id, amount, card, location, currency,
+            }) => (
               <Transaction
                 key={id}
                 datetime={datetime}
@@ -65,7 +67,7 @@ const App = () => {
               />
             ))}
           <S.ButtonsWrapper>
-            <S.StyledButton type='button' onClick={loadMore}>
+            <S.StyledButton type="button" onClick={loadMore}>
               Load more
             </S.StyledButton>
           </S.ButtonsWrapper>
